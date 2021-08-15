@@ -8,14 +8,14 @@ const Header = () => {
     <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
       <Container>
         <Link to="/">
-          <Navbar.Brand href="/">ProShop</Navbar.Brand>
+          <Navbar.Brand>ProShop</Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-            <Link to="/cart">
+            <LinkContainer to="/cart">
               <Nav.Link><i className='fas fa-shopping-cart'></i>Cart</Nav.Link>
-            </Link>
+            </LinkContainer>
             <LinkContainer to="/login">
               <Nav.Link><i className='fas fa-user'></i>Sign In</Nav.Link>
             </LinkContainer>
