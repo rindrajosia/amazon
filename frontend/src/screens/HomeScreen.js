@@ -11,7 +11,7 @@ const HomeScreen = () => {
       const response = await axios.get('/api/products');
       setProducts(response.data);
     }
-    fetchProducts
+    fetchProducts()
   }, [])
   return (
     <>
