@@ -12,11 +12,15 @@ connectDB();
 
 const app = express();
 
+//parse body to json
+app.use(express.json())
+
 app.get('/', (request, response) => {
   response.send('API is running...')
 })
 
 app.use('/api/products', productRoutes);
+
 
 app.use(notFound);
 app.use(errorHandler);
