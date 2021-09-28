@@ -3,7 +3,7 @@ import asyncHandler from 'express-async-handler';
 import generateToken from '../utils/generateToken.js';
 
 // @desc Auth user && get token
-// @route post /api/users/login
+// @route Get /api/users/login
 // @access public
 const authUser = asyncHandler(async(request, response) => {
   const { email, password } = request.body;
@@ -15,7 +15,7 @@ const authUser = asyncHandler(async(request, response) => {
       _id: user._id,
       name: user.name,
       email: user.email,
-      isAdmin: user.admin,
+      isAdmin: user.isAdmin,
       token: generateToken(user._id),
     })
 
@@ -25,4 +25,24 @@ const authUser = asyncHandler(async(request, response) => {
   }
 })
 
-export { authUser }
+// @desc Get user profile
+// @route GEt /api/users/profile
+// @access private
+const getUserProfile = asyncHandler(async(request, response) => {
+
+  const user = await User.findById(request.user._id);
+
+  if(user){
+    response.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    })
+  } else {
+    response.status(401);
+    throw new Error('User not found');
+  }
+})
+
+export { authUser, getUserProfile }
