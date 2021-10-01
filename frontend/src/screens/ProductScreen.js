@@ -32,7 +32,7 @@ const ProductScreen = ({ history, match }) => {
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message variant='Danger'>{ error }</Message>
+        <Message variant='danger'>{ error }</Message>
       ) :(
         <Row>
           <Col md={6}>
